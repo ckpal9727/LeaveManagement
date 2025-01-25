@@ -1,0 +1,286 @@
+[
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminLeaveManagementController",
+    "Method": "GetAllLeaves",
+    "RelativePath": "api/AdminLeaveManagement",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminLeaveManagementController",
+    "Method": "AddLeaveBalance",
+    "RelativePath": "api/AdminLeaveManagement/addLeaveBalance",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.LeaveBalanceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminLeaveManagementController",
+    "Method": "AddLeaveType",
+    "RelativePath": "api/AdminLeaveManagement/addLeaveType",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.LeaveTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminLeaveManagementController",
+    "Method": "GetAllLeaveBalance",
+    "RelativePath": "api/AdminLeaveManagement/GeAllLeaveBalance",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "balanceId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminLeaveManagementController",
+    "Method": "GetAllLeaveTypes",
+    "RelativePath": "api/AdminLeaveManagement/GeAllLeaveTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminLeaveManagementController",
+    "Method": "UpdateLeaveBalance",
+    "RelativePath": "api/AdminLeaveManagement/updateLeaveBalance/{leaveBalanceId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "leaveBalanceId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.LeaveBalanceUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminLeaveManagementController",
+    "Method": "UpdateLeaveOfUser",
+    "RelativePath": "api/AdminLeaveManagement/updateLeaveOfUser/{leaveId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "leaveId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.LeaveUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminUserManagementController",
+    "Method": "GetAllUser",
+    "RelativePath": "api/AdminUserManagement",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminUserManagementController",
+    "Method": "AddUser",
+    "RelativePath": "api/AdminUserManagement/addUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.RegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminUserManagementController",
+    "Method": "AddUserType",
+    "RelativePath": "api/AdminUserManagement/addUserType",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.UserTypeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminUserManagementController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/AdminUserManagement/deleteUser/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminUserManagementController",
+    "Method": "GetAllUserTypes",
+    "RelativePath": "api/AdminUserManagement/GetAllUserType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AdminUserManagementController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/AdminUserManagement/updateUser/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.UserUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/AddUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.RegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.UserController",
+    "Method": "GetAllLeaves",
+    "RelativePath": "api/User/leaves/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.UserController",
+    "Method": "RequestLeave",
+    "RelativePath": "api/User/RequestForLeave",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.LeaveAddDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EmployeeManagement4.Controllers.UserController",
+    "Method": "UpdateLeave",
+    "RelativePath": "api/User/updateLeave/{leaveId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "leaveId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "input",
+        "Type": "EmployeeManagement4.Domain.Dto.LeaveUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
