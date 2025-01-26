@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagement4.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class AdminUserManagementController : ControllerBase
@@ -20,19 +20,61 @@ namespace EmployeeManagement4.Controllers
             _applicationDb = applicationDb;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAllUser()
+        public async Task<IActionResult> GetAllUser(
+    string? filterText,
+    int pageNumber = 1,
+    int pageSize = 3,
+    string sortColumn = "UserName",
+    string sortOrder = "asc")
         {
             try
             {
-                var user= await _applicationDb.Users.Include(u=>u.UserType).Select(user=>new { UserId = user.Id,UserName=user.Name,Email=user.Email,UserType=user.UserType.Name}).ToListAsync();
+                // Build the query
+                var query = _applicationDb.Users
+                    .Include(u => u.UserType)
+                    .Select(user => new
+                    {
+                        UserId = user.Id,
+                        UserName = user.Name,
+                        Email = user.Email,
+                        UserType = user.UserType.Name
+                    });
 
-                return Ok(user);
+                // Apply filtering
+                if (!string.IsNullOrEmpty(filterText))
+                {
+                    filterText = filterText.ToLower();
+                    query = query.Where(u =>
+                        u.UserName.ToLower().Contains(filterText) ||
+                        u.Email.ToLower().Contains(filterText));
+                }
+
+                // Apply sorting
+                query = sortColumn.ToLower() switch
+                {
+                    "email" => sortOrder.ToLower() == "desc"
+                        ? query.OrderByDescending(u => u.Email)
+                        : query.OrderBy(u => u.Email),
+                    "username" => sortOrder.ToLower() == "desc"
+                        ? query.OrderByDescending(u => u.UserName)
+                        : query.OrderBy(u => u.UserName),
+                    _ => query.OrderBy(u => u.UserName) // Default sorting
+                };
+
+                // Apply pagination
+                var users = await query
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
+
+                return Ok(users);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
+
 
         [HttpGet("GetAllUserType")]
         public async Task<IActionResult> GetAllUserTypes()
@@ -55,7 +97,7 @@ namespace EmployeeManagement4.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if(await _applicationDb.Users.AnyAsync(u=>u.Email == input.Email))
+            if (await _applicationDb.Users.AnyAsync(u => u.Email == input.Email))
             {
                 return Conflict("User already Existe");
             }
@@ -80,14 +122,14 @@ namespace EmployeeManagement4.Controllers
                     Name = user.Name,
                     Email = user.Email
                 };
-                return CreatedAtAction(nameof(AddUser),new { name= user.Name}, userDto);
+                return CreatedAtAction(nameof(AddUser), new { name = user.Name }, userDto);
 
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-           
+
         }
         [HttpPost("updateUser/{userId}")]
         public async Task<IActionResult> UpdateUser(Guid userId, UserUpdateDto input)
@@ -98,14 +140,14 @@ namespace EmployeeManagement4.Controllers
             }
             try
             {
-                var user= await _applicationDb.Users.FirstOrDefaultAsync(u=>u.Id == userId);
+                var user = await _applicationDb.Users.FirstOrDefaultAsync(u => u.Id == userId);
                 user.Email = input.Email;
                 user.Password = input.Password;
                 user.Name = input.Name;
-                 _applicationDb.Users.Update(user);
+                _applicationDb.Users.Update(user);
                 await _applicationDb.SaveChangesAsync();
 
-                var userDto = new 
+                var userDto = new
                 {
                     Id = user.Id,
                     Name = user.Name,
@@ -128,7 +170,7 @@ namespace EmployeeManagement4.Controllers
             }
             var userType = new UserType()
             {
-                Id= Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Name = input.Name,
             };
             try
@@ -136,7 +178,7 @@ namespace EmployeeManagement4.Controllers
                 var result = await _applicationDb.UserTypes.AddAsync(userType);
                 await _applicationDb.SaveChangesAsync();
 
-                
+
                 return CreatedAtAction(nameof(AddUserType), userType);
 
             }
